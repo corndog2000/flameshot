@@ -16,9 +16,8 @@ bool PresetTool::closeOnButtonPressed() const
 
 QIcon PresetTool::icon(const QColor& background, bool inEditor) const
 {
-    //return QIcon(iconPath(background) + "content-copy.svg");
-    return inEditor ? QIcon()
-                    : QIcon(iconPath(background) + "size_indicator.svg");
+    Q_UNUSED(inEditor);
+    return QIcon(iconPath(background) + "preset-1.svg");
 }
 QString PresetTool::name() const
 {

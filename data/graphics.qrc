@@ -78,5 +78,15 @@
         <file>img/material/white/plus.svg</file>
         <file>img/material/black/minus.svg</file>
         <file>img/material/white/minus.svg</file>
+        <file>img/material/black/preset-1.svg</file>
+        <file>img/material/white/preset-1.svg</file>
+        <file>img/material/black/preset-2.svg</file>
+        <file>img/material/white/preset-2.svg</file>
+        <file>img/material/black/preset-3.svg</file>
+        <file>img/material/white/preset-3.svg</file>
+        <file>img/material/black/preset-4.svg</file>
+        <file>img/material/white/preset-4.svg</file>
+        <file>img/material/black/preset-5.svg</file>
+        <file>img/material/white/preset-5.svg</file>
     </qresource>
 </RCC>
