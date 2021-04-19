@@ -39,6 +39,7 @@ target_sources(flameshot PRIVATE redo/redotool.h redo/redotool.cpp)
 target_sources(flameshot PRIVATE save/savetool.h save/savetool.cpp)
 target_sources(flameshot PRIVATE selection/selectiontool.h selection/selectiontool.cpp)
 target_sources(flameshot PRIVATE sizeindicator/sizeindicatortool.h sizeindicator/sizeindicatortool.cpp)
+target_sources(flameshot PRIVATE preset/presettool.h preset/presettool.cpp)
 target_sources(
   flameshot
   PRIVATE text/textconfig.h

@@ -13,6 +13,7 @@
 #include "src/core/controller.h"
 #include "src/core/qguiappcurrentscreen.h"
 #include "src/tools/toolfactory.h"
+#include "src/tools/preset/presettool.h"
 #include "src/utils/colorutils.h"
 #include "src/utils/screengrabber.h"
 #include "src/utils/screenshotsaver.h"
@@ -120,9 +121,12 @@ CaptureWidget::CaptureWidget(const uint id,
         move(currentScreen->geometry().x(), currentScreen->geometry().y());
         resize(currentScreen->size());
 #else
-        setWindowFlags(Qt::BypassWindowManagerHint | Qt::WindowStaysOnTopHint |
-                       Qt::FramelessWindowHint | Qt::Tool);
-        resize(pixmap().size());
+        
+        //setWindowFlags(Qt::BypassWindowManagerHint | Qt::WindowStaysOnTopHint |
+        //               Qt::FramelessWindowHint | Qt::Tool);
+ 
+        setWindowFlags(Qt::Tool);
+        
 #endif
     }
     // Create buttons
@@ -147,6 +151,7 @@ CaptureWidget::CaptureWidget(const uint id,
         r.moveTo(0, 0);
         areas.append(r);
 #else
+        // areas
         for (QScreen* const screen : QGuiApplication::screens()) {
             QRect r = screen->geometry();
             r.moveTo(r.x() / screen->devicePixelRatio(),
@@ -216,8 +221,18 @@ void CaptureWidget::updateButtons()
             case CaptureToolButton::ButtonType::TYPE_COPY:
             case CaptureToolButton::ButtonType::TYPE_UNDO:
             case CaptureToolButton::ButtonType::TYPE_REDO:
+
                 // nothing to do, just skip non-dynamic buttons with existing
                 // hard coded slots
+                break;
+
+            case CaptureToolButton::ButtonType::TYPE_PRESET:
+                {
+                    PresetTool* pt = dynamic_cast<PresetTool*>(b->tool());
+                    if (pt) {
+                        connect(pt, &PresetTool::sendPreset, this, &CaptureWidget::gotoPreset);
+                    }
+                }
                 break;
             default:
                 // Set shortcuts for a tool
@@ -234,8 +249,7 @@ void CaptureWidget::updateButtons()
                 break;
         }
 
-        connect(
-          b, &CaptureToolButton::pressedButton, this, &CaptureWidget::setState);
+        connect(b, &CaptureToolButton::pressedButton, this, &CaptureWidget::setState);
         connect(b->tool(),
                 &CaptureTool::requestAction,
                 this,
@@ -593,6 +607,7 @@ void CaptureWidget::moveLeft()
 void CaptureWidget::moveRight()
 {
     moveSelection(QPoint(1, 0));
+    //m_selection->setGeometry(QRect(200, 200, 200, 200));
 }
 
 void CaptureWidget::moveUp()
@@ -980,6 +995,11 @@ void CaptureWidget::handleButtonSignal(CaptureTool::Request r)
         default:
             break;
     }
+}
+
+void CaptureWidget::gotoPreset(QRect rect)
+{
+    repositionSelection(rect);
 }
 
 void CaptureWidget::setDrawColor(const QColor& c)

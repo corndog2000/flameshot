@@ -25,6 +25,7 @@
 #include "src/utils/confighandler.h"
 #include "text/texttool.h"
 #include "undo/undotool.h"
+#include "preset/presettool.h"
 
 ToolFactory::ToolFactory(QObject* parent)
   : QObject(parent)
@@ -102,6 +103,9 @@ CaptureTool* ToolFactory::CreateTool(CaptureToolButton::ButtonType t,
             break;
         case CaptureToolButton::TYPE_SIZEDECREASE:
             tool = new SizeDecreaseTool(parent);
+            break;
+        case CaptureToolButton::TYPE_PRESET:
+            tool = new PresetTool(parent);
             break;
         default:
             tool = nullptr;

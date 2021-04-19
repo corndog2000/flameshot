@@ -88,6 +88,7 @@ private slots:
     void setDrawThickness(const int& t);
     void incrementCircleCount();
     void decrementCircleCount();
+    void gotoPreset(QRect rect);
 
 protected:
     void paintEvent(QPaintEvent*);

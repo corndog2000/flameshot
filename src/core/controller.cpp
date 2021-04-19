@@ -294,8 +294,8 @@ void Controller::startVisualCapture(const uint id,
             return;
         }
 
-        m_captureWindow = new CaptureWidget(id, forcedSavePath);
-        // m_captureWindow = new CaptureWidget(id, forcedSavePath, false); //
+        //m_captureWindow = new CaptureWidget(id, forcedSavePath);
+        m_captureWindow = new CaptureWidget(id, forcedSavePath, false); //
         // debug
         connect(m_captureWindow,
                 &CaptureWidget::captureFailed,
@@ -314,8 +314,8 @@ void Controller::startVisualCapture(const uint id,
         m_captureWindow->activateWindow();
         m_captureWindow->raise();
 #else
-        m_captureWindow->showFullScreen();
-        // m_captureWindow->show(); //Debug
+        //m_captureWindow->showFullScreen();
+        m_captureWindow->show(); //Debug
 #endif
         if (!m_appLatestUrl.isEmpty() &&
             ConfigHandler().ignoreUpdateToVersion().compare(
@@ -433,7 +433,7 @@ void Controller::enableTrayIcon()
     connect(
       recentAction, SIGNAL(triggered()), this, SLOT(showRecentScreenshots()));
 
-    // generate menu
+    // generate menu for tray icon
     m_trayIconMenu->addAction(captureAction);
     m_trayIconMenu->addAction(launcherAction);
     m_trayIconMenu->addSeparator();

@@ -33,7 +33,8 @@ enum class ToolType
     UNDO,
     UPLOAD,
     SIZEINCREASE,
-    SIZEDECREASE
+    SIZEDECREASE,
+    PRESET
 };
 
 class CaptureTool : public QObject
@@ -84,7 +85,9 @@ public:
         // increase tool size for all tools
         REQ_INCREASE_TOOL_SIZE,
         // decrease tool size for all tools
-        REQ_DECREASE_TOOL_SIZE
+        REQ_DECREASE_TOOL_SIZE,
+        // the window has been resized
+        REQ_PRESET_DONE_OK,
     };
 
     explicit CaptureTool(QObject* parent = nullptr)

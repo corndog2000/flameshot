@@ -33,4 +33,6 @@ struct CaptureContext
     bool fullscreen;
 
     QPixmap selectedScreenshotArea() const;
+
+    QRect presetRect;
 };

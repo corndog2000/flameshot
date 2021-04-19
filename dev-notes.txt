@@ -1,0 +1,8 @@
+void CaptureWidget::updateButtons() seems to create all the buttons for the capture window qt gui thingie
+
+capturewidget.h seems to have methods to resize and move the capture area
+
+QVector<CaptureToolButton::ButtonType> ConfigHandler::getButtons() appears to setup the list of buttons and create each instance of each tool class
+
+Each class has their own pressed method that gets called when pressed from this method: void CaptureWidget::processTool(CaptureTool* t)
+

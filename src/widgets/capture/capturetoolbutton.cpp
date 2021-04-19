@@ -40,7 +40,7 @@ void CaptureToolButton::initButton()
                           GlobalValues::buttonBaseSize() + 2,
                           GlobalValues::buttonBaseSize() + 2),
                     QRegion::Ellipse));
-
+    auto tacocat = m_tool->name().toStdString();
     setToolTip(m_tool->description());
 
     m_emergeAnimation = new QPropertyAnimation(this, "size", this);
@@ -129,6 +129,7 @@ static std::map<CaptureToolButton::ButtonType, int> buttonTypeOrder
 
       { CaptureToolButton::TYPE_SIZEINCREASE, 20 },
       { CaptureToolButton::TYPE_SIZEDECREASE, 21 },
+      { CaptureToolButton::TYPE_PRESET, 22 },
 };
 
 int CaptureToolButton::getPriorityByButton(CaptureToolButton::ButtonType b)
@@ -157,6 +158,7 @@ QVector<CaptureToolButton::ButtonType>
       CaptureToolButton::TYPE_SAVE,
       CaptureToolButton::TYPE_EXIT,
       CaptureToolButton::TYPE_IMAGEUPLOADER,
+      CaptureToolButton::TYPE_PRESET,
 #if not defined(Q_OS_MACOS)
       CaptureToolButton::TYPE_OPEN_APP,
 #endif
