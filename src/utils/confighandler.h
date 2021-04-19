@@ -92,6 +92,9 @@ public:
     void setDefaultSettings();
     void setAllTheButtons();
 
+    QString savePreset();
+    void setSavePreset(const QString&);
+
     void setIgnoreUpdateToVersion(const QString& text);
     QString ignoreUpdateToVersion();
 

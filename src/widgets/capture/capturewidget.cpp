@@ -1002,6 +1002,13 @@ void CaptureWidget::gotoPreset(QRect rect)
     repositionSelection(rect);
 }
 
+void CaptureWidget::savePreset1()
+{
+    
+    m_config.setSavePreset();
+
+}
+
 void CaptureWidget::setDrawColor(const QColor& c)
 {
     m_context.color = c;
@@ -1135,6 +1142,10 @@ void CaptureWidget::initShortcuts()
     new QShortcut(QKeySequence(ConfigHandler().shortcut("TYPE_MOVE_DOWN")),
                   this,
                   SLOT(moveDown()));
+
+    new QShortcut(QKeySequence(ConfigHandler().shortcut("TYPE_SAVE_PRESET_1")),
+                  this,
+                  SLOT(savePreset1()));
 
     new QShortcut(
       QKeySequence(ConfigHandler().shortcut("TYPE_COMMIT_CURRENT_TOOL")),

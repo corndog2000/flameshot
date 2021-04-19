@@ -581,6 +581,18 @@ void ConfigHandler::setAllTheButtons()
                         QVariant::fromValue(buttons.toList()));
 }
 
+// Load the preset dimentions
+QString ConfigHandler::savePreset()
+{
+    return m_settings.value(QStringLiteral("savePreset")).toString();
+}
+
+// Save the preset dimentions
+void ConfigHandler::setSavePreset(const QString& savePreset)
+{
+    m_settings.setValue(QStringLiteral("savePreset"), savePreset);
+}
+
 QString ConfigHandler::configFilePath() const
 {
     return m_settings.fileName();

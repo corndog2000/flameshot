@@ -2,6 +2,7 @@
 // SPDX-FileCopyrightText: 2017-2019 Alejandro Sirgo Rica & Contributors
 // Joseph Schroedl | April 18th, 2021 | github.com/corndog2000
 
+#include "src/utils/confighandler.h"
 #include "presettool.h"
 #include <QPainter>
 
@@ -44,6 +45,9 @@ void PresetTool::pressed(const CaptureContext& context)
     // This is where the magic happens and we resize the window to the preset size
     //context.cw->repositionSelection(QRect(200, 200, 200, 200));
     
+    ConfigHandler config;
+
+    config.savePreset()
     // Tell the capture widget to resize the selection
     emit sendPreset(QRect(200, 200, 200, 200));
 }
